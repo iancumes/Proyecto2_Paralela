@@ -122,6 +122,16 @@ Quedan resueltos la recuperación local del grupo 4, el entorno Docker y SSH y e
 - Comando de compilación del diagnóstico, ejecutado en WSL: `gcc -O3 -Wall -Wextra -fopenmp src/diagnose_des.c -lcrypto -o bin/diagnose_des`. El caso del grupo 4 se diagnosticó con frase exacta e intervalo `[0, 1048576)`; su JSON se conserva separado de los tiempos MPI.
 - Se entrega un paquete de fuentes, instrucciones, Word y evidencias en `output/Proyecto2_Fase2_Para_Equipo.zip`, con hash SHA-256 y comprobación de integridad. Se excluyen archivos temporales, Git y llaves privadas. La versión del proyecto se sincroniza en la rama main del repositorio público para que los compañeros puedan obtener los mismos archivos.
 
+## Guía integral de uso y funcionamiento
+
+El usuario solicitó una guía que explique cómo utilizar el proyecto, qué se hizo y cómo funciona, y pidió subirla al terminar.
+
+- Se creó `GUIA_USO_PROYECTO.md` como punto de entrada para ambas fases.
+- Se añadieron rutas Windows, WSL y Docker, ejemplos completos de cifrado y búsqueda, parámetros, explicación de MPI, lectura de resultados, manejo de contenedores y exportación de archivos.
+- Se documentaron el caso del grupo 4, la diferencia de relleno, los scripts de registro, los límites de las mediciones y los pendientes físicos del equipo.
+- Se enlazó la guía desde README y desde la guía inicial, y se actualiza el paquete compartido para incluirla.
+- Se verificaron los enlaces locales y el formato de los bloques de comandos. Se ejecutó el ejemplo Docker con un contenedor de comprobación: cuatro procesos encontraron la llave 900000, se exportó el archivo con `docker cp` y se comparó byte por byte con la recuperación certificada. El contenedor de comprobación se retiró después; los archivos temporales quedaron en `tmp/guia_qa`, fuera del versionado.
+
 ## Nueva prueba prueba_002
 
 Fecha local: 2026-10-21T20:11:21.763294-06:00.

@@ -1,5 +1,9 @@
 # Proyecto 2: DES y búsqueda con MPI
 
+**Empezar aquí:** [Guía completa de uso y funcionamiento](GUIA_USO_PROYECTO.md).
+Explica qué implementamos, cómo funciona la búsqueda, cómo ejecutar cada caso
+en WSL y Docker, cómo consultar las evidencias y qué falta del clúster físico.
+
 ## Avance de la fase 2
 
 El intercambio con el grupo 4 está documentado en el

@@ -1,5 +1,9 @@
 # Guía del Proyecto 2: DES y búsqueda paralela con MPI
 
+Esta guía conserva el recorrido inicial de la fase 1. Para el uso actual de
+ambas fases, el grupo 4 y Docker, consultar la
+[guía completa de uso y funcionamiento](GUIA_USO_PROYECTO.md).
+
 ## 1. Ubicación
 
 El proyecto está dentro de dos carpetas llamadas `Proyecto2`.
