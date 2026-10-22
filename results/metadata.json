@@ -1,0 +1,39 @@
+{
+  "started_local": "2026-10-15T23:25:35.830580-06:00",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "cpu": "Apple M1 Pro",
+  "logical_cpus": 8,
+  "memory_bytes": 17179869184,
+  "mpi": "mpirun (Open MPI) 5.0.11\n\nReport bugs to https://www.open-mpi.org/community/help/",
+  "openssl": "OpenSSL 3.6.4 25 Aug 2026 (Library: OpenSSL 3.6.4 25 Aug 2026)",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.3.2)",
+  "text_words": 350,
+  "text_bytes": 2557,
+  "text_sha256": "4640df7ae35fd17f6eed18ee5bd9dd76858f5f273311a8a15ce84e3d82a0e5ac",
+  "space": [
+    0,
+    262144
+  ],
+  "keys": [
+    8192,
+    135168,
+    249856
+  ],
+  "processes": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "repeats": 5,
+  "warmups_per_case": 1,
+  "batch": 128,
+  "seed": 20261015,
+  "binding": "none",
+  "hosts": 1,
+  "phrase": "ciencia con paciencia",
+  "timed": "MPI_MAX de duraciones locales, despues de MPI_Barrier; incluye calculo y Allreduce; excluye E/S, cifrado, arranque y Gather de estadisticas",
+  "finished_local": "2026-10-15T23:32:36.596553-06:00",
+  "wall_seconds": 420.2775890000048,
+  "measured_runs": 180
+}

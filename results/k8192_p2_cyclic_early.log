@@ -1,0 +1,5 @@
+{"trial":0,"processes":2,"strategy":"cyclic","mode":"early","lower":0,"upper":262144,"batch":128,"seconds":0.101167000,"attempts":8321,"found":8192,"winner":0}
+{"trial":1,"processes":2,"strategy":"cyclic","mode":"early","lower":0,"upper":262144,"batch":128,"seconds":0.096985000,"attempts":8321,"found":8192,"winner":0}
+{"trial":2,"processes":2,"strategy":"cyclic","mode":"early","lower":0,"upper":262144,"batch":128,"seconds":0.094937000,"attempts":8321,"found":8192,"winner":0}
+{"trial":3,"processes":2,"strategy":"cyclic","mode":"early","lower":0,"upper":262144,"batch":128,"seconds":0.095839000,"attempts":8321,"found":8192,"winner":0}
+{"trial":4,"processes":2,"strategy":"cyclic","mode":"early","lower":0,"upper":262144,"batch":128,"seconds":0.094918000,"attempts":8321,"found":8192,"winner":0}

@@ -1,0 +1,18 @@
+
+digraph Crypt {graph [bgcolor="white", pad="0.22", nodesep="0.26", ranksep="0.28", fontname="Arial"];
+node [shape=box, style="rounded,filled", fillcolor="#edf5f8", color="#2c6779", fontname="Arial", fontsize=12, margin="0.16,0.10"];
+edge [color="#416778", fontname="Arial", fontsize=10, arrowsize=0.7];
+rankdir=TB;
+in [label="encrypt(key, buffer, len)\no decrypt(key, buffer, len)", fillcolor="#cdece8"];
+valid [label="Comprobar key < 2^56\ny len múltiplo de 8"];
+map [label="Dividir el índice en 8 grupos de 7 bits\nColocar datos en bits 7..1 de cada byte"];
+parity [label="DES_set_odd_parity\nAjustar el bit 0 de cada byte"];
+schedule [label="DES_set_key_unchecked\nConstruir las 16 subllaves una sola vez"];
+block [label="Para pos = 0, 8, 16,..., len-8\nCopiar 8 bytes al bloque de entrada"];
+des [label="DES_ecb_encrypt(input, output, schedule, mode)\nmode = DES_ENCRYPT o DES_DECRYPT"];
+save [label="Copiar bloque resultante a buffer + pos"];
+more [shape=diamond, label="¿Quedan bloques?", fillcolor="#fff1d8"];
+end [label="buffer transformado en el mismo espacio\nSe procesaron exactamente len bytes", fillcolor="#cdece8"];
+in -> valid -> map -> parity -> schedule -> block -> des -> save -> more;
+more -> block [label="Sí"]; more -> end [label="No"];
+}

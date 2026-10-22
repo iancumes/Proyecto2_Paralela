@@ -1,0 +1,5 @@
+OK: 23 paginas renderizadas y revisadas; sin contenido fuera de margenes.
+OK: Base64 del PDF reproduce exactamente el criptograma de 2560 bytes.
+OK: texto de 350 palabras; original conservado byte por byte.
+OK: 180 mediciones principales, 5 demostraciones de 56 bits y recuperaciones completas.
+OK: ZIP comprobado mediante testzip.

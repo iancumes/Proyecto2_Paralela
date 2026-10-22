@@ -1,0 +1,15 @@
+# Ejecutables compilados localmente
+/bin/
+
+# Archivos temporales de Python y editores
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Configuración privada local
+.env
+.env.*
+!.env.example

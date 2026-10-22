@@ -1,0 +1,4 @@
+original/bruteforce_.c:6:10: fatal error: 'rpc/des_crypt.h' file not found
+    6 | #include <rpc/des_crypt.h>
+      |          ^~~~~~~~~~~~~~~~~
+1 error generated.

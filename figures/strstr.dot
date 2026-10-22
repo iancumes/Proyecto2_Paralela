@@ -1,0 +1,15 @@
+
+digraph Substring {graph [bgcolor="white", pad="0.22", nodesep="0.26", ranksep="0.28", fontname="Arial"];
+node [shape=box, style="rounded,filled", fillcolor="#edf5f8", color="#2c6779", fontname="Arial", fontsize=12, margin="0.16,0.10"];
+edge [color="#416778", fontname="Arial", fontsize=10, arrowsize=0.7];
+rankdir=TB;
+start [label="strstr(texto, frase)\nEntradas terminadas en NUL", fillcolor="#cdece8"];
+scan [label="Considerar posiciones del texto\nantes del primer byte NUL"];
+compare [shape=diamond, label="¿Coinciden todos\nlos bytes de frase?", fillcolor="#fff1d8"];
+yes [label="Sí: devolver puntero a la primera coincidencia\ntryKey interpreta puntero != NULL como 1", fillcolor="#cdece8"];
+more [shape=diamond, label="¿Quedan posiciones?", fillcolor="#fff1d8"];
+no [label="No: devolver NULL\ntryKey devuelve 0", fillcolor="#ffe7df"];
+start -> scan -> compare;
+compare -> yes [label="Sí"]; compare -> more [label="No"];
+more -> scan [label="Sí"]; more -> no [label="No"];
+}

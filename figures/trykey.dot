@@ -1,0 +1,23 @@
+
+digraph Try {graph [bgcolor="white", pad="0.22", nodesep="0.26", ranksep="0.28", fontname="Arial"];
+node [shape=box, style="rounded,filled", fillcolor="#edf5f8", color="#2c6779", fontname="Arial", fontsize=12, margin="0.16,0.10"];
+edge [color="#416778", fontname="Arial", fontsize=10, arrowsize=0.7];
+rankdir=TB;
+orig [label="ORIGINAL: tryKey(key, ciph, len)", fillcolor="#fff1d8"];
+o1 [label="Reservar char temp[len+1] en la pila"];
+o2 [label="memcpy(temp, ciph, len)\nConservar intacto el criptograma original"];
+o3 [label="temp[len] = 0\nAgregar terminador de cadena"];
+o4 [label="decrypt(key, temp, len)\nEl original SOLO transforma 16 bytes", fillcolor="#ffe7df"];
+o5 [label="strstr(temp, search) != NULL\nDevolver 1 si encuentra la frase, 0 si no"];
+new [label="CORREGIDO: scratch reutilizable de len+1 bytes", fillcolor="#cdece8"];
+n1 [label="Copiar len bytes del criptograma a scratch"];
+n2 [label="Descifrar TODOS los bloques con el candidato"];
+n3 [shape=diamond, label="¿PKCS#7 válido?", fillcolor="#fff1d8"];
+n4 [label="scratch[plain_len] = 0\nBuscar phrase con strstr"];
+n5 [label="Devolver si hay coincidencia\nEl ciphertext compartido no cambia"];
+reject [label="Devolver 0", fillcolor="#ffe7df"];
+orig -> o1 -> o2 -> o3 -> o4 -> o5;
+new -> n1 -> n2 -> n3;
+n3 -> reject [label="No"]; n3 -> n4 [label="Sí"]; n4 -> n5;
+{rank=same; orig; new;}
+}

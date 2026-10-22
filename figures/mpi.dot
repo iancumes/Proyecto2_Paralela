@@ -1,0 +1,18 @@
+
+digraph MPI {graph [bgcolor="white", pad="0.22", nodesep="0.26", ranksep="0.28", fontname="Arial"];
+node [shape=box, style="rounded,filled", fillcolor="#edf5f8", color="#2c6779", fontname="Arial", fontsize=12, margin="0.16,0.10"];
+edge [color="#416778", fontname="Arial", fontsize=10, arrowsize=0.7];
+rankdir=TB;
+init [label="Todos: MPI_Init; obtener rank y P", fillcolor="#cdece8"];
+root [label="Rank 0: leer archivo cifrado\nMPI_Bcast: longitud y bytes a todos"];
+split [label="Cada rank calcula su inicio, cantidad y stride\nReservar buffer temporal local"];
+barrier [label="MPI_Barrier\nt0 = MPI_Wtime()"];
+work [label="Probar hasta B = 128 candidatos locales\ntryKey copia, descifra y busca la frase"];
+reduce [label="MPI_Allreduce(MPI_MIN)\nCompartir llave candidata o UINT64_MAX"];
+found [shape=diamond, label="¿early y llave hallada,\no trabajo agotado?", fillcolor="#fff1d8"];
+measure [label="Duración local = MPI_Wtime() - t0\nMPI_Reduce(MPI_MAX): tiempo de búsqueda"];
+out [label="Reunir intentos y tiempos de cada proceso\nRank 0: validar, escribir resultado y JSON\nMPI_Finalize", fillcolor="#cdece8"];
+init -> root -> split -> barrier -> work -> reduce -> found;
+found -> work [label="No; también ranks sin trabajo\nparticipan en el colectivo"];
+found -> measure [label="Sí"]; measure -> out;
+}

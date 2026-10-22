@@ -1,0 +1,12 @@
+
+digraph Copy {graph [bgcolor="white", pad="0.22", nodesep="0.26", ranksep="0.28", fontname="Arial"];
+node [shape=box, style="rounded,filled", fillcolor="#edf5f8", color="#2c6779", fontname="Arial", fontsize=12, margin="0.16,0.10"];
+edge [color="#416778", fontname="Arial", fontsize=10, arrowsize=0.7];
+rankdir=TB;
+call [label="memcpy(destino, origen, 8)", fillcolor="#cdece8"];
+src [shape=box, label="origen (cipher)\nA1  00  C3  7F  10  E5  08  2A"];
+copy [label="Copiar 8 BYTES\nEl byte 00 también se copia\nLa función no interpreta texto ni descifra"];
+dst [shape=box, label="destino (temp), capacidad 9\nA1  00  C3  7F  10  E5  08  2A  ??"];
+term [shape=box, label="Después de temp[8] = 0\nA1  00  C3  7F  10  E5  08  2A  00", fillcolor="#fff1d8"];
+call -> src -> copy -> dst -> term;
+}
