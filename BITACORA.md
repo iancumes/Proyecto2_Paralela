@@ -166,3 +166,29 @@ mpirun --bind-to none -np 4 ./bin/bruteforce_mpi search --cipher fase2/grupo4/te
 Código de salida: 0. Evidencia: `fase2/grupo4/pruebas/prueba_003.json`.
 
 Resultado observado: `[{"trial": 0, "processes": 4, "strategy": "block", "mode": "early", "lower": 0, "upper": 1048576, "batch": 128, "seconds": 5.344241034, "attempts": 454561, "found": 900000, "winner": 3, "padding": "none"}, {"trial": 1, "processes": 4, "strategy": "block", "mode": "early", "lower": 0, "upper": 1048576, "batch": 128, "seconds": 5.395420789, "attempts": 454561, "found": 900000, "winner": 3, "padding": "none"}, {"trial": 2, "processes": 4, "strategy": "block", "mode": "early", "lower": 0, "upper": 1048576, "batch": 128, "seconds": 5.450885256, "attempts": 454561, "found": 900000, "winner": 3, "padding": "none"}]`.
+
+## Preparación local en Mac Intel — 21 de octubre de 2026
+
+- Se revisaron las guías de uso, ejecución y Mac/clúster, y se construyó
+  `mpi-cluster-image` para Linux amd64 en una Mac Intel con Docker Desktop
+  4.80.0. La imagen contiene Open MPI 4.1.2 y OpenSSL 3.0.2.
+- Se prepararon los dos contenedores de Compose, con cuota de 2 CPU cada uno,
+  SSH sin contraseña y hostfile de dos slots por nodo.
+- Pasaron las 22 comprobaciones de fase 1 y toda la batería de fase 2.
+  Las búsquedas con uno y cuatro procesos recuperaron la llave 900000 y el
+  SHA-256 esperado del texto del grupo 4. Son pruebas de funcionamiento con
+  una repetición sin calentamiento en modo early, en una sola computadora.
+- Se detectó que la red automática del ensayo, 172.20.0.0/16, se superponía
+  con la Wi-Fi 172.20.10.0/28 e impedía conectar desde el contenedor a la IP
+  del Mac. Se configuró Compose con 192.168.240.0/24, ajustable mediante
+  P2_ENSAYO_SUBNET, y se documentó la elección. Se reconstruyó la imagen,
+  se repitió la recuperación entre dos contenedores y se comprobó SSH.
+- Se preparó el nodo trabajador `mpi_node` con red host y cuota de 2 CPU.
+  Después de habilitar host networking y reiniciar Docker, SSH respondió en
+  el puerto 2222 desde el Mac y desde el contenedor hacia la IP del Mac.
+- La subred física no apareció dentro del contenedor. La ejecución entre
+  computadoras sigue pendiente de resolver la red y autorizar la llave
+  pública del maestro; la guía contempla una VM Linux en puente.
+- Los logs, manifiestos y estado específico de esta preparación se conservan
+  localmente y se excluyen con `.gitignore`. Se mantienen versionadas las
+  evidencias de entrega existentes en `fase2/` y `pruebas_usuario/`.

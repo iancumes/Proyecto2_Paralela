@@ -317,6 +317,12 @@ Si ese nombre ya existe de una prueba anterior, usar otro nombre o exportar y re
 
 Este ensayo utiliza Docker Compose, dos contenedores con cuota de 2 CPU cada uno y una red bridge privada. No utiliza volúmenes y no requiere otra computadora.
 
+La subred predeterminada del ensayo es `192.168.240.0/24`. Si coincide con la
+LAN u otra red del equipo, definir `P2_ENSAYO_SUBNET` con una subred privada libre
+antes de crear los contenedores. Evitar solapamientos: una red Docker
+`172.20.0.0/16`, por ejemplo, intercepta las direcciones de una Wi-Fi
+`172.20.10.0/28`. Conservar los resultados antes de retirar y recrear una red.
+
 En **PowerShell**, desde la raíz de este proyecto, usar el Python disponible en esta instalación de Codex:
 
 ```powershell

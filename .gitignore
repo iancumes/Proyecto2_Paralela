@@ -6,11 +6,23 @@ __pycache__/
 Thumbs.db
 *.swp
 /tmp/
+
+# Preparación y pruebas manuales locales; las evidencias finales se versionan aparte
+/pruebas_usuario/preparacion_*/
+/pruebas_usuario_live/
+/pruebas_manual/
+/resultados_cluster/
+/recuperado_grupo4_demo.txt
+
+# Configuración y credenciales SSH de cada computadora
 /cluster_hosts
-**/id_rsa
-**/id_rsa.*
-**/id_ed25519
+/maestro.pub
+**/id_rsa*
+**/id_ed25519*
+**/id_ecdsa*
+**/id_dsa*
 **/authorized_keys
+**/known_hosts
 
 # Configuración privada local
 .env

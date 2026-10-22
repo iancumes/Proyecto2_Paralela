@@ -12,4 +12,9 @@ services:
     networks: [ensayo]
     cpus: 2
 networks:
-  ensayo: {}
+  ensayo:
+    ipam:
+      config:
+        # Evita que Docker asigne 172.20.0.0/16, que coincide con algunos hotspots Mac.
+        # Cambiar P2_ENSAYO_SUBNET si esta subred coincide con la LAN del equipo.
+        - subnet: ${P2_ENSAYO_SUBNET:-192.168.240.0/24}
