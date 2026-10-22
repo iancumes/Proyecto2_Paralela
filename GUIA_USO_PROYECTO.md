@@ -2,6 +2,8 @@
 
 Esta guía explica qué hace el proyecto, qué implementamos en sus dos fases y cómo compilarlo, ejecutar búsquedas y consultar sus evidencias. Incluye rutas para esta computadora Windows y comandos para trabajar con Docker. Para la preparación de los compañeros en Mac y la reunión del clúster, se complementa con [la guía Mac y clúster](fase2/GUIA_MAC_Y_CLUSTER.md).
 
+Para ejecutar en pareja, abrir según el rol la [guía de comandos de la maestra](GUIA_COMANDOS_MAESTRA.md) o la [guía de comandos de la colaboradora](GUIA_COMANDOS_COLABORADORA.md). Ambas señalan los momentos de intercambio y la ubicación exacta de cada dato.
+
 ## 1 Qué hace el proyecto
 
 El programa cifra un archivo de texto con DES y después intenta encontrar su llave probando candidatos en paralelo con MPI. Es un ejercicio académico de computación paralela y distribuida.

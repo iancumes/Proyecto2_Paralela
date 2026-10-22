@@ -4,6 +4,14 @@
 Explica qué implementamos, cómo funciona la búsqueda, cómo ejecutar cada caso
 en WSL y Docker, cómo consultar las evidencias y qué falta del clúster físico.
 
+Para trabajar en pareja, usar estas guías sincronizadas:
+
+- [Comandos de la computadora maestra](GUIA_COMANDOS_MAESTRA.md).
+- [Comandos de la computadora colaboradora, con pasos para Mac](GUIA_COMANDOS_COLABORADORA.md).
+
+Indican cuándo compartir IP, slots y llave pública, en qué archivo se coloca
+cada dato y cuándo debe esperar cada persona antes de continuar.
+
 ## Avance de la fase 2
 
 El intercambio con el grupo 4 está documentado en el

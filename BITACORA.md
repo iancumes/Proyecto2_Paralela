@@ -132,6 +132,17 @@ El usuario solicitó una guía que explique cómo utilizar el proyecto, qué se 
 - Se enlazó la guía desde README y desde la guía inicial, y se actualiza el paquete compartido para incluirla.
 - Se verificaron los enlaces locales y el formato de los bloques de comandos. Se ejecutó el ejemplo Docker con un contenedor de comprobación: cuatro procesos encontraron la llave 900000, se exportó el archivo con `docker cp` y se comparó byte por byte con la recuperación certificada. El contenedor de comprobación se retiró después; los archivos temporales quedaron en `tmp/guia_qa`, fuera del versionado.
 
+## Guías de comandos separadas por rol
+
+El usuario solicitó instrucciones para las dos personas, especificando en qué momento intercambiar los datos de las computadoras y dónde colocarlos.
+
+- Se crearon `GUIA_COMANDOS_MAESTRA.md` y `GUIA_COMANDOS_COLABORADORA.md` para la pareja de dos computadoras.
+- Se coordinaron con momentos A a F y confirmaciones explícitas antes de SSH y ejecución distribuida.
+- Se especificaron las variables de IP, subred y slots, el hostfile exclusivo de la maestra, la ubicación de la llave pública en la colaboradora y los comandos de exportación.
+- Se distinguieron los comandos del host Windows/Mac de los ejecutados dentro de Bash del contenedor, y se mantuvo la condición de verificar la red física antes de avanzar.
+- Se verificaron los enlaces relativos y la sintaxis Bash de todos los bloques de ambas guías. Se contrastaron rutas, puerto SSH y parámetros con el entrypoint y el ejecutor existentes. Esta revisión no se presenta como una nueva prueba física entre computadoras.
+- Se actualizaron los enlaces de README y de la guía general, y el paquete de entrega incorpora las dos guías por rol.
+
 ## Nueva prueba prueba_002
 
 Fecha local: 2026-10-21T20:11:21.763294-06:00.
