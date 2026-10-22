@@ -1,6 +1,3 @@
-# Ejecutables compilados localmente
-/bin/
-
 # Archivos temporales de Python y editores
 __pycache__/
 *.py[cod]

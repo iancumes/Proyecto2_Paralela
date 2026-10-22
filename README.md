@@ -4,7 +4,9 @@ Para ejecutar el proyecto en Windows mediante Ubuntu/WSL, consultar la
 [guía paso a paso](GUIA_EJECUCION.md). La primera compilación y las pruebas
 realizadas en ese entorno están documentadas en
 [validación local](pruebas_usuario/VALIDACION_LOCAL.md).
-El ejecutable se genera localmente con Make y no se versiona en Git.
+Se incluye en `bin/bruteforce_mpi` el ejecutable Linux x86-64 validado en WSL.
+Para recompilarlo en el entorno de destino, usar `make -B OPENSSL_PREFIX=/usr`
+en Ubuntu; en macOS, usar `make -B` con las dependencias instaladas.
 
 El informe está en `output/pdf/Informe_Proyecto2_DES_MPI.pdf`. La fuente de lectura
 editable está en `informe_fuente.md`; se genera desde `scripts/build_report.py`.
