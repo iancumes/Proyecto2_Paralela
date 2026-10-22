@@ -1,0 +1,12 @@
+--------------------------------------------------------------------------
+Open RTE detected a parse error in the hostfile:
+    cluster_hosts
+It occured on line number 1 on token 1.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+An internal error has occurred in ORTE:
+
+[[5585,0],0] FORCE-TERMINATE AT (null):1 - error ../../../../../orte/mca/ras/base/ras_base_allocate.c(352)
+
+This is something that should be reported to the developers.
+--------------------------------------------------------------------------

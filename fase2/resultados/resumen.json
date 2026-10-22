@@ -1,0 +1,76 @@
+{
+  "nota": "Todas las mediciones Docker actuales pertenecen a una sola computadora; no son resultados de red fisica.",
+  "docker_cpus_por_contenedor_en_ensayo": 2,
+  "rows": [
+    {
+      "kind": "local",
+      "processes": 1,
+      "mode": "full",
+      "upper": 1048576,
+      "n": 3,
+      "mean_s": 39.45446024133333,
+      "sd_s": 0.2660783368062535,
+      "attempts": [
+        1048576,
+        1048576,
+        1048576
+      ],
+      "found": [
+        900000,
+        900000,
+        900000
+      ],
+      "sha256_plain": "8d1cd8c9a596155e1501bae3fe73db27ab3e99a73b958fa6dfecbd41baeb9505",
+      "evidence": "fase2\\resultados\\20261021_201452_857110_local_p1_full\\evidencia.json",
+      "speedup": 1.0,
+      "efficiency_percent": 100.0
+    },
+    {
+      "kind": "local",
+      "processes": 4,
+      "mode": "full",
+      "upper": 1048576,
+      "n": 3,
+      "mean_s": 54.43215789833333,
+      "sd_s": 0.938701828832866,
+      "attempts": [
+        1048576,
+        1048576,
+        1048576
+      ],
+      "found": [
+        900000,
+        900000,
+        900000
+      ],
+      "sha256_plain": "8d1cd8c9a596155e1501bae3fe73db27ab3e99a73b958fa6dfecbd41baeb9505",
+      "evidence": "fase2\\resultados\\20261021_201731_895638_local_p4_full\\evidencia.json",
+      "speedup": 0.7248373344857121,
+      "efficiency_percent": 18.120933362142804
+    },
+    {
+      "kind": "rehearsal",
+      "processes": 4,
+      "mode": "full",
+      "upper": 1048576,
+      "n": 3,
+      "mean_s": 5.112825336999999,
+      "sd_s": 0.10692975097081646,
+      "attempts": [
+        1048576,
+        1048576,
+        1048576
+      ],
+      "found": [
+        900000,
+        900000,
+        900000
+      ],
+      "sha256_plain": "8d1cd8c9a596155e1501bae3fe73db27ab3e99a73b958fa6dfecbd41baeb9505",
+      "evidence": "fase2\\resultados\\20261021_202443_525504_rehearsal_p4_full\\evidencia.json",
+      "speedup": 7.716762776113847,
+      "efficiency_percent": 192.9190694028462
+    }
+  ],
+  "cluster_fisico_ejecutado": false
+}

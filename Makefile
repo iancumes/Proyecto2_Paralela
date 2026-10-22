@@ -6,7 +6,11 @@ LDFLAGS += -L$(OPENSSL_PREFIX)/lib
 LDLIBS += -lcrypto
 
 .PHONY: all test clean
-all: bin/bruteforce_mpi
+all: bin/bruteforce_mpi bin/mpi_probe
+
+bin/mpi_probe: src/mpi_probe.c
+	mkdir -p bin
+	$(MPICC) $(CFLAGS) $< -o $@
 
 bin/bruteforce_mpi: src/bruteforce_mpi.c
 	mkdir -p bin
@@ -16,4 +20,4 @@ test: all
 	python3 tests/verify.py
 
 clean:
-	rm -f bin/bruteforce_mpi
+	rm -f bin/bruteforce_mpi bin/mpi_probe

@@ -1,0 +1,4 @@
+rank=0 host=p2-master ipv4=lo:127.0.0.1;eth0:172.21.0.3;
+rank=1 host=p2-master ipv4=lo:127.0.0.1;eth0:172.21.0.3;
+rank=2 host=p2-master ipv4=lo:127.0.0.1;eth0:172.21.0.3;
+rank=3 host=p2-master ipv4=lo:127.0.0.1;eth0:172.21.0.3;

@@ -1,5 +1,59 @@
 # Proyecto 2: DES y búsqueda con MPI
 
+## Avance de la fase 2
+
+El intercambio con el grupo 4 está documentado en el
+[reporte de fase 2](fase2/INFORME_FASE2.md), su
+[versión Word](output/docx/Informe_Proyecto2_Fase2.docx) y la
+[bitácora](BITACORA.md). Se conserva el Base64 recibido, su decodificación y
+los logs de todas las pruebas. Se recuperó la llave **900000** y el mensaje
+completo del grupo 4, verificado por recifrado exacto. Se añadió `--padding none`
+para conservar sus bytes; PKCS#7 continúa como valor predeterminado.
+
+La [guía para compañeros en Mac y clúster](fase2/GUIA_MAC_Y_CLUSTER.md) explica
+Docker, SSH, red, hostfile, límites de Docker Desktop y captura de evidencias.
+El ensayo de dos contenedores es local; la ejecución entre computadoras sigue
+pendiente de la reunión del equipo.
+
+Las nuevas pruebas se registran sin sobrescribir las anteriores:
+
+```sh
+python3 scripts/validar_grupo4.py --lower 0 --upper 1048576 --padding none --processes 4
+```
+
+El script añade una entrada en la bitácora. Para regenerar el Word y Markdown,
+ejecutar `scripts/actualizar_reporte_fase2.py` con el Python de documentos de
+Codex, que incluye `python-docx`, y revisar el Word renderizado.
+
+### Docker y ensayo individual
+
+```sh
+docker build -t mpi-cluster-image .
+docker run --rm mpi-cluster-image mpirun -np 2 echo 'Proceso MPI ejecutado'
+docker run --rm mpi-cluster-image bash cluster/preflight.sh
+python3 scripts/ensayo_local.py
+python3 scripts/resumir_fase2.py
+```
+
+El ensayo usa dos contenedores sin volúmenes, cuotas de 2 CPU y red bridge
+privada. Conserva logs, hashes y tres mediciones por caso. Para inspeccionarlo:
+
+```sh
+docker compose -f cluster/compose.local.yaml ps
+```
+
+Antes de eliminarlos, conservar `fase2/resultados`. Para detener solo los
+recursos de este ensayo, ejecutar `docker compose -f cluster/compose.local.yaml down`.
+
+Para las pruebas de corrección, después de compilar:
+
+```sh
+python3 tests/verify.py
+python3 tests/verify_phase2.py
+```
+
+## Guía y validación de la fase 1
+
 Para ejecutar el proyecto en Windows mediante Ubuntu/WSL, consultar la
 [guía paso a paso](GUIA_EJECUCION.md). La primera compilación y las pruebas
 realizadas en ese entorno están documentadas en

@@ -1,0 +1,5 @@
+ssh-keygen: generating new host keys: RSA DSA ECDSA ED25519 
+Conexion SSH sin contrasena exitosa
+port 2222
+permitrootlogin yes
+passwordauthentication no

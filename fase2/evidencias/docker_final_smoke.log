@@ -1,0 +1,5 @@
+SELFTEST OK: vector DES y 34 longitudes PKCS#7
+SSH_FINAL_OK
+{"trial":0,"processes":3,"strategy":"block","mode":"early","lower":899997,"upper":900003,"batch":128,"seconds":0.000045330,"attempts":6,"found":900000,"winner":1,"padding":"none"}
+ENCRYPT OK plain_bytes=2192 cipher_bytes=2192 key_index=900000 key_hex=01010101016def40
+RECIFRADO_FINAL_OK

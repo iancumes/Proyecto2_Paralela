@@ -1,0 +1,14 @@
+.git
+bin
+output
+tmp
+figures
+results
+pruebas_usuario
+pruebas_usuario_live
+**/__pycache__
+**/*.docx
+**/*.zip
+**/id_rsa*
+**/authorized_keys
+.env*

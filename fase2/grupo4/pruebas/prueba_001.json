@@ -1,0 +1,53 @@
+{
+  "inicio": "2026-10-21T19:58:14.696805-06:00",
+  "plataforma": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "argv": [
+    "mpirun",
+    "--bind-to",
+    "none",
+    "-np",
+    "4",
+    "./bin/bruteforce_mpi",
+    "search",
+    "--cipher",
+    "fase2/grupo4/texto_cifrado.des",
+    "--phrase",
+    "la busqueda distribuida termina cuando aparece la frase clave",
+    "--lower",
+    "0",
+    "--upper",
+    "262144",
+    "--strategy",
+    "block",
+    "--mode",
+    "early",
+    "--batch",
+    "128",
+    "--stats",
+    "fase2/grupo4/pruebas/prueba_001",
+    "--out",
+    "fase2/grupo4/pruebas/prueba_001_recuperado.txt"
+  ],
+  "sha256_cifrado": "508919eb64871841a8b074240f2603c93bcfcf8c00c28080fd2f23177c6fd891",
+  "sha256_ejecutable": "a00cf8fefe89db85c1fe3d561e9f2a2960b2d41c31bf29a3520799bba87d40e0",
+  "caracter": "exploratoria; formato y rango del emisor sin confirmar",
+  "fin": "2026-10-21T19:58:20.583658-06:00",
+  "duracion_externa_s": 5.830198845999803,
+  "codigo_salida": 2,
+  "resultados": [
+    {
+      "trial": 0,
+      "processes": 4,
+      "strategy": "block",
+      "mode": "early",
+      "lower": 0,
+      "upper": 262144,
+      "batch": 128,
+      "seconds": 3.02152802,
+      "attempts": 262144,
+      "found": null,
+      "winner": null
+    }
+  ],
+  "archivo_recuperado_generado": false
+}

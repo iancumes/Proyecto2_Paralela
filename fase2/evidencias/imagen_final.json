@@ -1,0 +1,7 @@
+{
+  "imagen_final": "sha256:1529d150f8a6019c57d36819d24a9ab8f1f3825189e22a378580f8ae5922ff9d",
+  "arquitectura": "amd64",
+  "sistema": "linux",
+  "nota": "Las mediciones anteriores conservan el ID de su imagen; la final añade normalizacion del hostfile y evita llaves SSH de build. El codigo DES es el mismo.",
+  "smoke_final": "fase2/evidencias/docker_final_smoke.log"
+}

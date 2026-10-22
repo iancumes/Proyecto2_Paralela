@@ -1,0 +1,10 @@
+{
+  "fecha_guatemala": "2026-10-21T20:24:43.459588-06:00",
+  "tipo": "ensayo virtual en una sola computadora; no cluster fisico",
+  "master": "172.21.0.3",
+  "worker": "172.21.0.2",
+  "subnet": "172.21.0.0/16",
+  "cpus_por_contenedor": 2,
+  "hostfile": "172.21.0.3 slots=2 max_slots=2\n172.21.0.2 slots=2 max_slots=2\n",
+  "image": "sha256:d56b65f65fc7cc46904d4a9a309b8ef41444b79081d365b66b4df420ec58b178"
+}

@@ -1,0 +1,13 @@
+{
+  "key_index": 900000,
+  "padding_retirado": "none",
+  "bytes": 2192,
+  "palabras_separadas_por_espacios": 355,
+  "sha256_plain": "8d1cd8c9a596155e1501bae3fe73db27ab3e99a73b958fa6dfecbd41baeb9505",
+  "sha256_cipher": "508919eb64871841a8b074240f2603c93bcfcf8c00c28080fd2f23177c6fd891",
+  "frase_exacta_presente": true,
+  "utf8_valido": true,
+  "recifrado_identico": true,
+  "confirmacion_del_emisor": "pendiente",
+  "origen_mpi": "fase2/grupo4/pruebas/prueba_003.json"
+}

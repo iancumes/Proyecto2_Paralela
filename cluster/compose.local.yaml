@@ -1,0 +1,15 @@
+# Ensayo virtual: dos contenedores en UNA computadora. No es el cluster fisico.
+name: proyecto2-ensayo
+services:
+  master:
+    image: mpi-cluster-image
+    hostname: p2-master
+    networks: [ensayo]
+    cpus: 2
+  worker:
+    image: mpi-cluster-image
+    hostname: p2-worker
+    networks: [ensayo]
+    cpus: 2
+networks:
+  ensayo: {}

@@ -1,0 +1,57 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.45kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:22.04
+#2 DONE 0.6s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 185B done
+#3 DONE 0.0s
+
+#4 [ 1/10] FROM docker.io/library/ubuntu:22.04@sha256:0a9887931b0e38af2e3487ed39e29436b0535c4f3f52e57745baaf79d1898956
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 28.90kB 0.0s done
+#5 DONE 0.0s
+
+#6 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends     build-essential openmpi-bin libopenmpi-dev openssh-server openssh-client     libssl-dev python3 ca-certificates iproute2 iputils-ping netcat-openbsd     && rm -rf /var/lib/apt/lists/*
+#6 CACHED
+
+#7 [ 3/10] WORKDIR /opt/proyecto2
+#7 CACHED
+
+#8 [ 4/10] COPY Makefile ./
+#8 DONE 0.1s
+
+#9 [ 5/10] COPY src/ src/
+#9 DONE 0.1s
+
+#10 [ 6/10] COPY data/texto.txt data/key_135168.des data/
+#10 DONE 0.1s
+
+#11 [ 7/10] COPY fase2/grupo4/texto_cifrado.des fase2/grupo4/
+#11 DONE 0.1s
+
+#12 [ 8/10] COPY scripts/validar_grupo4.py scripts/
+#12 DONE 0.1s
+
+#13 [ 9/10] COPY cluster/ cluster/
+#13 DONE 0.1s
+
+#14 [10/10] RUN make -B OPENSSL_PREFIX=/usr &&     rm -f /etc/ssh/ssh_host_* &&     chmod +x cluster/*.sh &&     mkdir -p /run/sshd /root/.ssh fase2/resultados &&     chmod 700 /root/.ssh &&     printf '%s\n' 'Port 2222' 'PermitRootLogin yes' 'PubkeyAuthentication yes'       'PasswordAuthentication no' 'KbdInteractiveAuthentication no'       'UsePAM no' 'PidFile /run/sshd.pid' > /etc/ssh/sshd_config &&     printf '%s\n' 'Host *' '    Port 2222' '    StrictHostKeyChecking no'       '    UserKnownHostsFile /dev/null' '    BatchMode yes'       '    ConnectTimeout 5' '    LogLevel ERROR' >> /etc/ssh/ssh_config
+#14 0.452 mkdir -p bin
+#14 0.454 mpicc -I/usr/include -O3 -std=c11 -Wall -Wextra -Wpedantic src/bruteforce_mpi.c -L/usr/lib -lcrypto -o bin/bruteforce_mpi
+#14 0.863 mkdir -p bin
+#14 0.864 mpicc -O3 -std=c11 -Wall -Wextra -Wpedantic src/mpi_probe.c -o bin/mpi_probe
+#14 DONE 1.1s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 0.2s done
+#15 writing image sha256:d56b65f65fc7cc46904d4a9a309b8ef41444b79081d365b66b4df420ec58b178 done
+#15 naming to docker.io/library/mpi-cluster-image done
+#15 DONE 0.3s

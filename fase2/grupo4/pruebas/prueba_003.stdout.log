@@ -1,0 +1,3 @@
+{"trial":0,"processes":4,"strategy":"block","mode":"early","lower":0,"upper":1048576,"batch":128,"seconds":5.344241034,"attempts":454561,"found":900000,"winner":3,"padding":"none"}
+{"trial":1,"processes":4,"strategy":"block","mode":"early","lower":0,"upper":1048576,"batch":128,"seconds":5.395420789,"attempts":454561,"found":900000,"winner":3,"padding":"none"}
+{"trial":2,"processes":4,"strategy":"block","mode":"early","lower":0,"upper":1048576,"batch":128,"seconds":5.450885256,"attempts":454561,"found":900000,"winner":3,"padding":"none"}

@@ -18,6 +18,7 @@
 #define NO_KEY UINT64_MAX
 
 static int rank_id;
+static int use_pkcs7 = 1;
 static void die(const char *message) {
     fprintf(stderr, "rank %d: %s\n", rank_id, message);
     MPI_Abort(MPI_COMM_WORLD, 1);
@@ -95,6 +96,11 @@ static int unpad(const unsigned char *data, size_t len, size_t *plain_len) {
     *plain_len = len - pad;
     return 1;
 }
+static int plain_length(const unsigned char *data, size_t len, size_t *plain_len) {
+    if (use_pkcs7) return unpad(data, len, plain_len);
+    *plain_len = len;
+    return 1;
+}
 /* scratch se reserva una sola vez por proceso: len+1 bytes.
  * Se descifra TODO el texto para cada candidato, igual en todas las pruebas.
  */
@@ -103,7 +109,7 @@ static int tryKey(uint64_t key, const unsigned char *cipher, size_t len,
     memcpy(scratch, cipher, len);
     decrypt(key, scratch, len);
     size_t plain_len;
-    if (!unpad(scratch, len, &plain_len)) return 0;
+    if (!plain_length(scratch, len, &plain_len)) return 0;
     scratch[plain_len] = 0;
     return strstr((char *)scratch, phrase) != NULL;
 }
@@ -141,6 +147,7 @@ static void usage(void) {
              "    [--lower 0] [--upper 72057594037927936] [--strategy block|cyclic]\n"
              "    [--mode early|full] [--batch 128] [--repeats 1] [--warmups 0]\n"
              "    [--stats PREFIX] [--out RECOVERED]\n"
+             "    [--padding pkcs7|none] (predeterminado: pkcs7)\n"
              "upper es EXCLUSIVO. full continua despues de encontrar la llave.\n"
              "stdout contiene una linea JSON por repeticion medida.");
     }
@@ -172,6 +179,11 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[a], "--stats")) stats = v;
         else if (!strcmp(argv[a], "--strategy")) strategy = v;
         else if (!strcmp(argv[a], "--mode")) mode = v;
+        else if (!strcmp(argv[a], "--padding")) {
+            if (!strcmp(v, "pkcs7")) use_pkcs7 = 1;
+            else if (!strcmp(v, "none")) use_pkcs7 = 0;
+            else die("relleno invalido");
+        }
         else die("opcion desconocida");
     }
     if (!strcmp(argv[1], "encrypt")) {
@@ -180,7 +192,8 @@ int main(int argc, char **argv) {
             size_t len;
             unsigned char *buffer = read_file(text_path, &len);
             if (memchr(buffer, 0, len)) die("el texto contiene NUL interno");
-            unsigned pad = 8 - len % 8;
+            if (!use_pkcs7 && len % 8) die("sin relleno el texto debe ser multiplo de ocho");
+            unsigned pad = use_pkcs7 ? 8 - len % 8 : 0;
             memset(buffer + len, pad, pad);
             encrypt(key, buffer, len + pad);
             write_file(out_path, buffer, len + pad);
@@ -267,8 +280,8 @@ int main(int argc, char **argv) {
         if (found == NO_KEY) any_failure = 1;
         if (!rank_id && trial >= 0) {
             printf("{\"trial\":%d,\"processes\":%d,\"strategy\":\"%s\",\"mode\":\"%s\",\"lower\":%" PRIu64 ",\"upper\":%" PRIu64 ",\"batch\":%" PRIu64 ",\"seconds\":%.9f,\"attempts\":%" PRIu64 ",\"found\":", trial, processes, strategy, mode, lower, upper, batch, global_elapsed, total_attempts);
-            if (found == NO_KEY) printf("null,\"winner\":null}\n");
-            else printf("%" PRIu64 ",\"winner\":%d}\n", found, winner);
+            if (found == NO_KEY) printf("null,\"winner\":null,\"padding\":\"%s\"}\n", use_pkcs7 ? "pkcs7" : "none");
+            else printf("%" PRIu64 ",\"winner\":%d,\"padding\":\"%s\"}\n", found, winner, use_pkcs7 ? "pkcs7" : "none");
             fflush(stdout);
             if (rank_csv) for (int node = 0; node < processes; ++node) {
                 uint64_t n = (uint64_t)node;
@@ -281,7 +294,7 @@ int main(int argc, char **argv) {
             memcpy(scratch, cipher, len);
             decrypt(found, scratch, len);
             size_t plain_len;
-            if (!unpad(scratch, len, &plain_len)) die("relleno final invalido");
+            if (!plain_length(scratch, len, &plain_len)) die("relleno final invalido");
             write_file(out_path, scratch, plain_len);
         }
     }

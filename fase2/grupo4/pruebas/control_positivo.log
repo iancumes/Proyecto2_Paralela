@@ -1,0 +1,8 @@
+SELFTEST OK: vector DES y 34 longitudes PKCS#7
+Comando de control:
+mpirun --bind-to none -np 4 ./bin/bruteforce_mpi search --cipher data/key_135168.des --phrase "ciencia con paciencia" --lower 135168 --upper 135169 --out fase2/grupo4/pruebas/control_recuperado.txt
+{"trial":0,"processes":4,"strategy":"block","mode":"early","lower":135168,"upper":135169,"batch":128,"seconds":0.000072778,"attempts":1,"found":135168,"winner":0}
+cmp data/texto.txt fase2/grupo4/pruebas/control_recuperado.txt
+CONTROL_POSITIVO_OK
+mpirun (Open MPI) 4.1.6
+OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)

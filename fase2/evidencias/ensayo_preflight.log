@@ -1,0 +1,20 @@
+=== Nodo y entorno ===
+p2-master
+x86_64
+mpirun (Open MPI) 4.1.2
+OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
+CPU disponibles: 20
+=== Interfaces visibles dentro del contenedor ===
+1: lo    inet 127.0.0.1/8 scope host lo\       valid_lft forever preferred_lft forever
+2: eth0    inet 172.21.0.3/16 brd 172.21.255.255 scope global eth0\       valid_lft forever preferred_lft forever
+=== Hash del codigo y criptograma ===
+2d9423d69880c71dbe94203a58ff8155f72c2924c887ebe76b990bc6cfab7017  src/bruteforce_mpi.c
+508919eb64871841a8b074240f2603c93bcfcf8c00c28080fd2f23177c6fd891  fase2/grupo4/texto_cifrado.des
+=== DES y SSH local ===
+SELFTEST OK: vector DES y 34 longitudes PKCS#7
+Conexion SSH sin contrasena exitosa
+=== SSH y codigo en nodos remotos ===
+p2-worker
+x86_64
+2d9423d69880c71dbe94203a58ff8155f72c2924c887ebe76b990bc6cfab7017  /opt/proyecto2/src/bruteforce_mpi.c
+508919eb64871841a8b074240f2603c93bcfcf8c00c28080fd2f23177c6fd891  /opt/proyecto2/fase2/grupo4/texto_cifrado.des

@@ -685,3 +685,9 @@ zwc5kR41byc3UJXiEzRarT8tnFM272I7Dv7gXepPGK2TrpABXEwNZUhlcKMw9XyJtMm73W2vPXK7
 ```
 
 El archivo binario está incluido en el paquete. Para comprobar el descifrado, ejecutar el comando search de la sección 10 y comparar el archivo recuperado con data/texto.txt. El ciphertext no almacena la llave ni el texto plano.
+
+## Avance de la fase 2
+
+Se recuperó el mensaje del grupo 4 con la llave 900000 y se verificó por recifrado exacto. Se añadió `--padding none` para leer el mensaje recibido sin retirar PKCS#7, conservando el valor predeterminado de la fase 1. Se preparó y probó Docker, MPI, SSH y un ensayo virtual entre dos contenedores de una sola computadora. Las instrucciones para compañeros en Mac y la ejecución física están en [Guía Mac y clúster](fase2/GUIA_MAC_Y_CLUSTER.md). El clúster entre computadoras queda para la reunión del equipo.
+
+El avance actualizado está en [Informe de fase 2](fase2/INFORME_FASE2.md) y en [Word](output/docx/Informe_Proyecto2_Fase2.docx). Las acciones y evidencias se registran en [Bitácora](BITACORA.md). El PDF previo corresponde a la fase 1. El script original `scripts/build_report.py` regenera ese informe de fase 1; el reporte de fase 2 se mantiene con `scripts/actualizar_reporte_fase2.py`.

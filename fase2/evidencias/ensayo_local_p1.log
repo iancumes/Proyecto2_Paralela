@@ -1,0 +1,140 @@
+{
+  "inicio_guatemala": "20261021_201452_857110",
+  "kind": "local",
+  "nota": "Ensayo en una computadora",
+  "config": {
+    "kind": "local",
+    "hostfile": null,
+    "subnet": null,
+    "processes": 1,
+    "mode": "full",
+    "repeats": 3,
+    "warmups": 1,
+    "upper": 1048576,
+    "timeout": 1200
+  },
+  "commands": [
+    {
+      "label": "versions",
+      "argv": [
+        "bash",
+        "-c",
+        "uname -m; mpirun --version; openssl version; nproc"
+      ],
+      "shell": "bash -c 'uname -m; mpirun --version; openssl version; nproc'"
+    },
+    {
+      "label": "mpi_nodes",
+      "argv": [
+        "mpirun",
+        "--bind-to",
+        "none",
+        "--nooversubscribe",
+        "--mca",
+        "pml",
+        "ob1",
+        "--mca",
+        "btl",
+        "self,vader,tcp",
+        "-np",
+        "1",
+        "./bin/mpi_probe"
+      ],
+      "shell": "mpirun --bind-to none --nooversubscribe --mca pml ob1 --mca btl self,vader,tcp -np 1 ./bin/mpi_probe"
+    },
+    {
+      "label": "search",
+      "argv": [
+        "mpirun",
+        "--bind-to",
+        "none",
+        "--nooversubscribe",
+        "--mca",
+        "pml",
+        "ob1",
+        "--mca",
+        "btl",
+        "self,vader,tcp",
+        "-np",
+        "1",
+        "./bin/bruteforce_mpi",
+        "search",
+        "--cipher",
+        "fase2/grupo4/texto_cifrado.des",
+        "--phrase",
+        "la busqueda distribuida termina cuando aparece la frase clave",
+        "--lower",
+        "0",
+        "--upper",
+        "1048576",
+        "--strategy",
+        "block",
+        "--mode",
+        "full",
+        "--padding",
+        "none",
+        "--batch",
+        "128",
+        "--repeats",
+        "3",
+        "--warmups",
+        "1",
+        "--stats",
+        "/opt/proyecto2/fase2/resultados/20261021_201452_857110_local_p1_full/ranks",
+        "--out",
+        "/opt/proyecto2/fase2/resultados/20261021_201452_857110_local_p1_full/texto_recuperado.txt"
+      ],
+      "shell": "mpirun --bind-to none --nooversubscribe --mca pml ob1 --mca btl self,vader,tcp -np 1 ./bin/bruteforce_mpi search --cipher fase2/grupo4/texto_cifrado.des --phrase 'la busqueda distribuida termina cuando aparece la frase clave' --lower 0 --upper 1048576 --strategy block --mode full --padding none --batch 128 --repeats 3 --warmups 1 --stats /opt/proyecto2/fase2/resultados/20261021_201452_857110_local_p1_full/ranks --out /opt/proyecto2/fase2/resultados/20261021_201452_857110_local_p1_full/texto_recuperado.txt"
+    }
+  ],
+  "ok": true,
+  "source_sha256": "2d9423d69880c71dbe94203a58ff8155f72c2924c887ebe76b990bc6cfab7017",
+  "cipher_sha256": "508919eb64871841a8b074240f2603c93bcfcf8c00c28080fd2f23177c6fd891",
+  "results": [
+    {
+      "trial": 0,
+      "processes": 1,
+      "strategy": "block",
+      "mode": "full",
+      "lower": 0,
+      "upper": 1048576,
+      "batch": 128,
+      "seconds": 39.712061492,
+      "attempts": 1048576,
+      "found": 900000,
+      "winner": 0,
+      "padding": "none"
+    },
+    {
+      "trial": 1,
+      "processes": 1,
+      "strategy": "block",
+      "mode": "full",
+      "lower": 0,
+      "upper": 1048576,
+      "batch": 128,
+      "seconds": 39.180646244,
+      "attempts": 1048576,
+      "found": 900000,
+      "winner": 0,
+      "padding": "none"
+    },
+    {
+      "trial": 2,
+      "processes": 1,
+      "strategy": "block",
+      "mode": "full",
+      "lower": 0,
+      "upper": 1048576,
+      "batch": 128,
+      "seconds": 39.470672988,
+      "attempts": 1048576,
+      "found": 900000,
+      "winner": 0,
+      "padding": "none"
+    }
+  ],
+  "plain_sha256": "8d1cd8c9a596155e1501bae3fe73db27ab3e99a73b958fa6dfecbd41baeb9505",
+  "plain_bytes": 2192,
+  "wall_s": 158.10408083099992
+}

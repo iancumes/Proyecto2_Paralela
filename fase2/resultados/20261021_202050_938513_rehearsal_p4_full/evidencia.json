@@ -1,0 +1,101 @@
+{
+  "inicio_guatemala": "20261021_202050_938513",
+  "kind": "rehearsal",
+  "nota": "Ensayo en una computadora",
+  "config": {
+    "kind": "rehearsal",
+    "hostfile": "cluster_hosts",
+    "subnet": "172.21.0.0/16",
+    "processes": 4,
+    "mode": "full",
+    "repeats": 3,
+    "warmups": 1,
+    "upper": 1048576,
+    "timeout": 1200
+  },
+  "commands": [
+    {
+      "label": "versions",
+      "argv": [
+        "bash",
+        "-c",
+        "uname -m; mpirun --version; openssl version; nproc"
+      ],
+      "shell": "bash -c 'uname -m; mpirun --version; openssl version; nproc'"
+    },
+    {
+      "label": "interfaces",
+      "argv": [
+        "ip",
+        "-j",
+        "-4",
+        "addr"
+      ],
+      "shell": "ip -j -4 addr"
+    },
+    {
+      "label": "ssh_0",
+      "argv": [
+        "ssh",
+        "root@172.21.0.3",
+        "cd /opt/proyecto2 && hostname && nproc && sha256sum src/bruteforce_mpi.c fase2/grupo4/texto_cifrado.des"
+      ],
+      "shell": "ssh root@172.21.0.3 'cd /opt/proyecto2 && hostname && nproc && sha256sum src/bruteforce_mpi.c fase2/grupo4/texto_cifrado.des'"
+    },
+    {
+      "label": "ssh_1",
+      "argv": [
+        "ssh",
+        "root@172.21.0.2",
+        "cd /opt/proyecto2 && hostname && nproc && sha256sum src/bruteforce_mpi.c fase2/grupo4/texto_cifrado.des"
+      ],
+      "shell": "ssh root@172.21.0.2 'cd /opt/proyecto2 && hostname && nproc && sha256sum src/bruteforce_mpi.c fase2/grupo4/texto_cifrado.des'"
+    },
+    {
+      "label": "mpi_nodes",
+      "argv": [
+        "mpirun",
+        "--bind-to",
+        "none",
+        "--nooversubscribe",
+        "--mca",
+        "pml",
+        "ob1",
+        "--mca",
+        "btl",
+        "self,vader,tcp",
+        "--hostfile",
+        "cluster_hosts",
+        "--map-by",
+        "node",
+        "--mca",
+        "btl_tcp_if_include",
+        "172.21.0.0/16",
+        "--mca",
+        "oob_tcp_if_include",
+        "172.21.0.0/16",
+        "-np",
+        "4",
+        "./bin/mpi_probe"
+      ],
+      "shell": "mpirun --bind-to none --nooversubscribe --mca pml ob1 --mca btl self,vader,tcp --hostfile cluster_hosts --map-by node --mca btl_tcp_if_include 172.21.0.0/16 --mca oob_tcp_if_include 172.21.0.0/16 -np 4 ./bin/mpi_probe"
+    }
+  ],
+  "ok": false,
+  "source_sha256": "2d9423d69880c71dbe94203a58ff8155f72c2924c887ebe76b990bc6cfab7017",
+  "cipher_sha256": "508919eb64871841a8b074240f2603c93bcfcf8c00c28080fd2f23177c6fd891",
+  "nodes": [
+    [
+      "172.21.0.3",
+      2,
+      2
+    ],
+    [
+      "172.21.0.2",
+      2,
+      2
+    ]
+  ],
+  "error": "mpi_nodes: codigo 1; revisar logs",
+  "wall_s": 0.8102235999999721
+}

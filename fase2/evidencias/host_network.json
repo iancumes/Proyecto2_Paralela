@@ -1,0 +1,220 @@
+{
+  "host_mode_container": true,
+  "windows_localhost_tcp_2222": true,
+  "interfaces": [
+    {
+      "ifindex": 1,
+      "ifname": "lo",
+      "flags": [
+        "LOOPBACK",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 65536,
+      "qdisc": "noqueue",
+      "operstate": "UNKNOWN",
+      "group": "default",
+      "txqlen": 1000,
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "127.0.0.1",
+          "prefixlen": 8,
+          "scope": "host",
+          "label": "lo",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 2,
+      "link_index": 2,
+      "ifname": "services1",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "UP",
+      "group": "default",
+      "link_netnsid": 0,
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "192.168.65.6",
+          "prefixlen": 32,
+          "scope": "global",
+          "label": "services1",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 3,
+      "ifname": "eth0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "fq_codel",
+      "operstate": "UNKNOWN",
+      "group": "default",
+      "txqlen": 1000,
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "192.168.65.3",
+          "prefixlen": 24,
+          "broadcast": "192.168.65.255",
+          "scope": "global",
+          "label": "eth0",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 4,
+      "ifname": "br-abedd3113d1d",
+      "flags": [
+        "NO-CARRIER",
+        "BROADCAST",
+        "MULTICAST",
+        "UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "DOWN",
+      "group": "default",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "172.20.0.1",
+          "prefixlen": 16,
+          "broadcast": "172.20.255.255",
+          "scope": "global",
+          "label": "br-abedd3113d1d",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 5,
+      "ifname": "br-24505bef1272",
+      "flags": [
+        "NO-CARRIER",
+        "BROADCAST",
+        "MULTICAST",
+        "UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "DOWN",
+      "group": "default",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "172.19.0.1",
+          "prefixlen": 16,
+          "broadcast": "172.19.255.255",
+          "scope": "global",
+          "label": "br-24505bef1272",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 6,
+      "ifname": "br-8735ca5092e1",
+      "flags": [
+        "NO-CARRIER",
+        "BROADCAST",
+        "MULTICAST",
+        "UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "DOWN",
+      "group": "default",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "172.18.0.1",
+          "prefixlen": 16,
+          "broadcast": "172.18.255.255",
+          "scope": "global",
+          "label": "br-8735ca5092e1",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 7,
+      "ifname": "docker0",
+      "flags": [
+        "NO-CARRIER",
+        "BROADCAST",
+        "MULTICAST",
+        "UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "DOWN",
+      "group": "default",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "172.17.0.1",
+          "prefixlen": 16,
+          "broadcast": "172.17.255.255",
+          "scope": "global",
+          "label": "docker0",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 20,
+      "ifname": "br-bc727d46f3a2",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "UP",
+      "group": "default",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "172.21.0.1",
+          "prefixlen": 16,
+          "broadcast": "172.21.255.255",
+          "scope": "global",
+          "label": "br-bc727d46f3a2",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    }
+  ],
+  "subred_fisica_visible": false,
+  "resumen": "El contenedor host muestra redes de la VM Docker, no la subred Wi-Fi 10.100.0.0/19; no valida conexion fisica MPI.",
+  "tcp_antes_de_habilitar": false,
+  "banner_despues_de_habilitar": "SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.18\r\n",
+  "host_networking_enabled": true
+}
